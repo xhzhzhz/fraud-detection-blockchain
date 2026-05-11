@@ -1,0 +1,50 @@
+{
+  "total_rows": 6362620,
+  "total_columns": 11,
+  "fraud_count": 8213,
+  "legitimate_count": 6354407,
+  "fraud_percentage": 0.12908204481801522,
+  "step_range": {
+    "min": 1,
+    "max": 743
+  },
+  "simulation_days": 30.958333333333332,
+  "fraud_by_type": {
+    "total": {
+      "CASH_OUT": 2237500,
+      "PAYMENT": 2151495,
+      "CASH_IN": 1399284,
+      "TRANSFER": 532909,
+      "DEBIT": 41432
+    },
+    "fraud": {
+      "CASH_OUT": 4116,
+      "PAYMENT": 0,
+      "CASH_IN": 0,
+      "TRANSFER": 4097,
+      "DEBIT": 0
+    },
+    "fraud_rate": {
+      "CASH_OUT": 0.18395530726256984,
+      "PAYMENT": 0.0,
+      "CASH_IN": 0.0,
+      "TRANSFER": 0.7687991758442811,
+      "DEBIT": 0.0
+    }
+  },
+  "missing_values": {
+    "step": 0,
+    "type": 0,
+    "amount": 0,
+    "nameOrig": 0,
+    "oldbalanceOrg": 0,
+    "newbalanceOrig": 0,
+    "nameDest": 0,
+    "oldbalanceDest": 0,
+    "newbalanceDest": 0,
+    "isFraud": 0,
+    "isFlaggedFraud": 0
+  },
+  "duplicate_rows": 0,
+  "memory_mb": 1675.828162
+}
