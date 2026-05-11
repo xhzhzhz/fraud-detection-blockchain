@@ -1,0 +1,31 @@
+# Environment
+.env
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data 
+data/raw/
+data/processed/
+data/splits/
+
+# Model tersimpan 
+models/saved/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Blockchain
+blockchain/node_modules/
+blockchain/cache/
+blockchain/artifacts/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

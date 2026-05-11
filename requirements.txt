@@ -1,0 +1,29 @@
+# Core Data Science
+numpy==1.26.4
+pandas==2.2.1
+scipy==1.13.0
+
+# Machine Learning
+scikit-learn==1.4.2
+xgboost==2.0.3
+imbalanced-learn==0.12.2
+joblib==1.4.0
+
+# Explainability
+shap==0.45.0
+
+# Visualization
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# API Development
+fastapi==0.111.0
+uvicorn==0.29.0
+pydantic==2.7.1
+
+# Blockchain Integration
+web3==6.18.0
+
+# Utilities
+python-dotenv==1.0.1
+tqdm==4.66.4
