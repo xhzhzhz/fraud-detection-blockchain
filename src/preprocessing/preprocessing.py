@@ -172,88 +172,93 @@ def temporal_split(
     df: pd.DataFrame
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, dict]:
     
-    logger.info("Melakukan stratified temporal split (70/15/15)...")
+    logger.info("Melakukan temporal split berbasis jumlah baris (70/15/15)...")
 
-    max_step = int(df["step"].max())
-    min_step = int(df["step"].min())
+    # mergesort bersifat stable sort, mempertahankan urutan baris dengan step sama
+    df_sorted = df.sort_values("step", kind="mergesort").reset_index(drop=True)
 
-    # Menghitung cutoff secara dinamis dari data aktual
-    step_range = max_step - min_step
-    train_cutoff = min_step + int(step_range * TRAIN_RATIO)
-    val_cutoff   = min_step + int(step_range * (TRAIN_RATIO + VAL_RATIO))
+    n_total = len(df_sorted)
+    n_train = int(n_total * TRAIN_RATIO)
+    n_val   = int(n_total * VAL_RATIO)
 
-    logger.info(f"Step range  : {min_step} – {max_step}")
-    logger.info(f"Train cutoff: step ≤ {train_cutoff}")
-    logger.info(f"Val cutoff  : step ≤ {val_cutoff}")
-    logger.info(f"Test range  : step > {val_cutoff}")
+    train_df = df_sorted.iloc[:n_train].copy()
+    val_df   = df_sorted.iloc[n_train : n_train + n_val].copy()
+    test_df  = df_sorted.iloc[n_train + n_val :].copy()
 
-    train_df = df[df["step"] <= train_cutoff].copy()
-    val_df   = df[(df["step"] > train_cutoff) &
-                  (df["step"] <= val_cutoff)].copy()
-    test_df  = df[df["step"] > val_cutoff].copy()
+    # Dokumentasi step cutoff untuk reproducibility
+    train_cutoff_step = int(train_df["step"].max())
+    val_cutoff_step   = int(val_df["step"].max())
+    test_start_step   = int(test_df["step"].min())
 
-    # Verifikasi proporsi fraud di setiap split
-    def fraud_pct(d):
+    def fraud_pct(d: pd.DataFrame) -> float:
         return d[TARGET_COLUMN].mean() * 100
 
     logger.info(
-        f"Train: {len(train_df):,} baris | "
-        f"Fraud: {fraud_pct(train_df):.4f}%"
+        f"Train: {len(train_df):>10,} baris ({len(train_df)/n_total*100:.1f}%) | "
+        f"Step hingga {train_cutoff_step} | "
+        f"Fraud: {train_df[TARGET_COLUMN].sum():,} ({fraud_pct(train_df):.4f}%)"
     )
     logger.info(
-        f"Val  : {len(val_df):,} baris | "
-        f"Fraud: {fraud_pct(val_df):.4f}%"
+        f"Val  : {len(val_df):>10,} baris ({len(val_df)/n_total*100:.1f}%) | "
+        f"Step {int(val_df['step'].min())}–{val_cutoff_step} | "
+        f"Fraud: {val_df[TARGET_COLUMN].sum():,} ({fraud_pct(val_df):.4f}%)"
     )
     logger.info(
-        f"Test : {len(test_df):,} baris | "
-        f"Fraud: {fraud_pct(test_df):.4f}%"
+        f"Test : {len(test_df):>10,} baris ({len(test_df)/n_total*100:.1f}%) | "
+        f"Step {test_start_step}–{int(test_df['step'].max())} | "
+        f"Fraud: {test_df[TARGET_COLUMN].sum():,} ({fraud_pct(test_df):.4f}%)"
     )
 
-    # Verifikasi tidak ada overlap
-    train_steps = set(train_df["step"].unique())
-    val_steps   = set(val_df["step"].unique())
-    test_steps  = set(test_df["step"].unique())
+    # Verifikasi tidak ada overlap antar split
+    train_idx = set(train_df.index)
+    val_idx   = set(val_df.index)
+    test_idx  = set(test_df.index)
 
-    assert len(train_steps & val_steps) == 0, "OVERLAP: Train dan Val!"
-    assert len(val_steps & test_steps) == 0,  "OVERLAP: Val dan Test!"
-    assert len(train_steps & test_steps) == 0, "OVERLAP: Train dan Test!"
+    assert len(train_idx & val_idx)  == 0, "OVERLAP: Train dan Val!"
+    assert len(val_idx  & test_idx)  == 0, "OVERLAP: Val dan Test!"
+    assert len(train_idx & test_idx) == 0, "OVERLAP: Train dan Test!"
+
+    # Verifikasi total baris tidak ada yang hilang
+    assert len(train_df) + len(val_df) + len(test_df) == n_total, \
+        "Total baris tidak cocok setelah split!"
+
     logger.info("Verifikasi overlap: PASSED — tidak ada overlap antar split.")
+    logger.info(f"Verifikasi total baris: PASSED — {n_total:,} baris terjaga.")
 
-    # Metadata split
+    # Metadata split untuk dokumentasi dan reproducibility
     split_info = {
-        "step_range": {"min": min_step, "max": max_step},
-        "train_cutoff": train_cutoff,
-        "val_cutoff": val_cutoff,
+        "split_method":    "temporal_by_row_count",
+        "ratios":          {"train": TRAIN_RATIO, "val": VAL_RATIO,
+                            "test": round(1 - TRAIN_RATIO - VAL_RATIO, 2)},
+        "step_cutoffs":    {"train_max_step": train_cutoff_step,
+                            "val_max_step":   val_cutoff_step,
+                            "test_min_step":  test_start_step},
         "splits": {
             "train": {
-                "n_rows": len(train_df),
-                "n_fraud": int(train_df[TARGET_COLUMN].sum()),
+                "n_rows":    len(train_df),
+                "n_fraud":   int(train_df[TARGET_COLUMN].sum()),
                 "fraud_pct": float(fraud_pct(train_df)),
-                "step_range": [int(train_df["step"].min()),
-                               int(train_df["step"].max())]
+                "step_range": [int(train_df["step"].min()), train_cutoff_step]
             },
             "val": {
-                "n_rows": len(val_df),
-                "n_fraud": int(val_df[TARGET_COLUMN].sum()),
+                "n_rows":    len(val_df),
+                "n_fraud":   int(val_df[TARGET_COLUMN].sum()),
                 "fraud_pct": float(fraud_pct(val_df)),
-                "step_range": [int(val_df["step"].min()),
-                               int(val_df["step"].max())]
+                "step_range": [int(val_df["step"].min()), val_cutoff_step]
             },
             "test": {
-                "n_rows": len(test_df),
-                "n_fraud": int(test_df[TARGET_COLUMN].sum()),
+                "n_rows":    len(test_df),
+                "n_fraud":   int(test_df[TARGET_COLUMN].sum()),
                 "fraud_pct": float(fraud_pct(test_df)),
-                "step_range": [int(test_df["step"].min()),
-                               int(test_df["step"].max())]
+                "step_range": [test_start_step, int(test_df["step"].max())]
             }
         },
-        "columns": list(train_df.columns),
+        "columns":         list(train_df.columns),
         "feature_columns": [c for c in train_df.columns
                             if c != TARGET_COLUMN and c != "step"]
     }
 
     return train_df, val_df, test_df, split_info
-
 
 # =============================================================
 # STEP 8: SIMPAN OUTPUT

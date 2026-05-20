@@ -1,0 +1,50 @@
+{
+  "baseline_XGBoost": {
+    "threshold": 0.6502,
+    "val_f1": 0.9765,
+    "val_recall": 1.0,
+    "val_precision": 0.9542
+  },
+  "baseline_RandomForest": {
+    "threshold": 0.6125,
+    "val_f1": 1.0,
+    "val_recall": 1.0,
+    "val_precision": 1.0
+  },
+  "smote_1_XGBoost": {
+    "threshold": 0.9438,
+    "val_f1": 0.9813,
+    "val_recall": 0.9822,
+    "val_precision": 0.9805
+  },
+  "smote_1_RandomForest": {
+    "threshold": 0.8149,
+    "val_f1": 1.0,
+    "val_recall": 1.0,
+    "val_precision": 1.0
+  },
+  "smote_2_XGBoost": {
+    "threshold": 0.8055,
+    "val_f1": 0.9991,
+    "val_recall": 1.0,
+    "val_precision": 0.9982
+  },
+  "smote_2_RandomForest": {
+    "threshold": 0.845,
+    "val_f1": 1.0,
+    "val_recall": 1.0,
+    "val_precision": 1.0
+  },
+  "smote_3_XGBoost": {
+    "threshold": 0.9822,
+    "val_f1": 0.9991,
+    "val_recall": 1.0,
+    "val_precision": 0.9982
+  },
+  "smote_3_RandomForest": {
+    "threshold": 0.845,
+    "val_f1": 1.0,
+    "val_recall": 1.0,
+    "val_precision": 1.0
+  }
+}

@@ -1,0 +1,17 @@
+config,model,split,threshold,precision,recall,f1,roc_auc,pr_auc,n_samples,n_fraud,n_pred_fraud,tp,fp,fn,tn,meets_all_targets,cv_pr_auc,best_params
+baseline,XGBoost,val,0.6502,0.9542,1.0,0.9765,1.0,0.9975,954311,562,589,562,27,0,953722,True,,rekonstruksi_dari_model_tersimpan
+baseline,XGBoost,test,0.6502,0.997,0.9992,0.9981,1.0,0.9995,954313,3994,4003,3991,12,3,950307,True,,rekonstruksi_dari_model_tersimpan
+baseline,RandomForest,val,0.6125,1.0,1.0,1.0,1.0,1.0,954311,562,562,562,0,0,953749,True,,rekonstruksi_dari_model_tersimpan
+baseline,RandomForest,test,0.6125,1.0,0.9982,0.9991,1.0,1.0,954313,3994,3987,3987,0,7,950319,True,,rekonstruksi_dari_model_tersimpan
+smote_1,XGBoost,val,0.9438,0.9805,0.9822,0.9813,1.0,0.9989,954311,562,563,552,11,10,953738,True,,rekonstruksi_dari_model_tersimpan
+smote_1,XGBoost,test,0.9438,0.9987,0.979,0.9887,1.0,0.9998,954313,3994,3915,3910,5,84,950314,True,,rekonstruksi_dari_model_tersimpan
+smote_1,RandomForest,val,0.8149,1.0,1.0,1.0,1.0,1.0,954311,562,562,562,0,0,953749,True,,rekonstruksi_dari_model_tersimpan
+smote_1,RandomForest,test,0.8149,1.0,0.9967,0.9984,1.0,1.0,954313,3994,3981,3981,0,13,950319,True,,rekonstruksi_dari_model_tersimpan
+smote_2,XGBoost,val,0.8055,0.9982,1.0,0.9991,1.0,1.0,954311,562,563,562,1,0,953748,True,,rekonstruksi_dari_model_tersimpan
+smote_2,XGBoost,test,0.8055,0.9995,0.9957,0.9976,1.0,0.9996,954313,3994,3979,3977,2,17,950317,True,,rekonstruksi_dari_model_tersimpan
+smote_2,RandomForest,val,0.845,1.0,1.0,1.0,1.0,1.0,954311,562,562,562,0,0,953749,True,,rekonstruksi_dari_model_tersimpan
+smote_2,RandomForest,test,0.845,1.0,0.9967,0.9984,1.0,1.0,954313,3994,3981,3981,0,13,950319,True,,rekonstruksi_dari_model_tersimpan
+smote_3,XGBoost,val,0.9822,0.9982,1.0,0.9991,1.0,1.0,954311,562,563,562,1,0,953748,True,1.0,"{'subsample': 0.7, 'max_depth': 7, 'learning_rate': 0.3, 'colsample_bytree': 0.7}"
+smote_3,XGBoost,test,0.9822,0.9997,0.995,0.9974,1.0,0.9998,954313,3994,3975,3974,1,20,950318,True,1.0,"{'subsample': 0.7, 'max_depth': 7, 'learning_rate': 0.3, 'colsample_bytree': 0.7}"
+smote_3,RandomForest,val,0.845,1.0,1.0,1.0,1.0,1.0,954311,562,562,562,0,0,953749,True,1.0,"{'max_depth': 20, 'max_features': 'sqrt', 'min_samples_split': 5, 'n_estimators': 200}"
+smote_3,RandomForest,test,0.845,1.0,0.9955,0.9977,1.0,1.0,954313,3994,3976,3976,0,18,950319,True,1.0,"{'max_depth': 20, 'max_features': 'sqrt', 'min_samples_split': 5, 'n_estimators': 200}"

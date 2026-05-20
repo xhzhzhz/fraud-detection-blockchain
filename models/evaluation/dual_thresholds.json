@@ -1,0 +1,46 @@
+{
+  "baseline": {
+    "theta_low": 0.4551,
+    "theta_high": 0.6502,
+    "suspicious_zone": 0.1951,
+    "val_metrics": {
+      "threshold": 0.6502,
+      "val_f1": 0.9765,
+      "val_recall": 1.0,
+      "val_precision": 0.9542
+    }
+  },
+  "smote_1": {
+    "theta_low": 0.6607,
+    "theta_high": 0.9438,
+    "suspicious_zone": 0.2831,
+    "val_metrics": {
+      "threshold": 0.9438,
+      "val_f1": 0.9813,
+      "val_recall": 0.9822,
+      "val_precision": 0.9805
+    }
+  },
+  "smote_2": {
+    "theta_low": 0.5638,
+    "theta_high": 0.8055,
+    "suspicious_zone": 0.2417,
+    "val_metrics": {
+      "threshold": 0.8055,
+      "val_f1": 0.9991,
+      "val_recall": 1.0,
+      "val_precision": 0.9982
+    }
+  },
+  "smote_3": {
+    "theta_low": 0.6875,
+    "theta_high": 0.9822,
+    "suspicious_zone": 0.2947,
+    "val_metrics": {
+      "threshold": 0.9822,
+      "val_f1": 0.9991,
+      "val_recall": 1.0,
+      "val_precision": 0.9982
+    }
+  }
+}

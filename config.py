@@ -68,7 +68,6 @@ RANDOM_STATE       = 42
 XGBOOST_PARAM_DIST = {
     "max_depth":        [3, 5, 7, 10],
     "learning_rate":    [0.01, 0.05, 0.1, 0.3],
-    "n_estimators":     [100, 300, 500],
     "subsample":        [0.7, 0.8, 1.0],
     "colsample_bytree": [0.7, 0.8, 1.0],
 }
@@ -76,30 +75,31 @@ XGBOOST_PARAM_DIST = {
 XGBOOST_FIXED_PARAMS = {
     "objective":        "binary:logistic",
     "eval_metric":      "aucpr",
-    "tree_method":      "hist",       
+    "tree_method":      "hist", 
+    "n_estimators":     500,     
     "random_state":     RANDOM_STATE,
-    "n_jobs":           -1,
+    "n_jobs":           1,
 }
 
-XGBOOST_N_ITER          = 50   # RandomizedSearchCV iterations
+XGBOOST_N_ITER          = 40   
 XGBOOST_CV_FOLDS        = 5
 XGBOOST_EARLY_STOPPING  = 50
 
-# Random Forest: ruang parameter untuk RandomizedSearchCV
-RF_PARAM_DIST = {
-    "n_estimators":     [100, 200, 300],
-    "max_depth":        [None, 10, 20, 30],
-    "min_samples_split":[2, 5, 10],
+# Random Forest — ruang parameter untuk GridSearchCV
+RF_PARAM_GRID = {
+    "n_estimators":     [100, 200],
+    "max_depth":        [10, 20],
+    "min_samples_split":[5, 10],
     "max_features":     ["sqrt", "log2"],
 }
 
 RF_FIXED_PARAMS = {
     "class_weight": "balanced",
     "random_state": RANDOM_STATE,
-    "n_jobs":       -1,
+    "max_samples": 0.3,
+    "n_jobs":       1,
 }
 
-RF_N_ITER     = 30
 RF_CV_FOLDS   = 5
 
 # =============================================================
