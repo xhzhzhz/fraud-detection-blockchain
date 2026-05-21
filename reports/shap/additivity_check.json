@@ -1,0 +1,30 @@
+[
+  {
+    "config": "baseline",
+    "mean_abs_error": 1.4e-07,
+    "pct_within_tol": 100.0,
+    "tolerance": 0.001,
+    "passes": true
+  },
+  {
+    "config": "smote_1",
+    "mean_abs_error": 6.9e-07,
+    "pct_within_tol": 100.0,
+    "tolerance": 0.001,
+    "passes": true
+  },
+  {
+    "config": "smote_2",
+    "mean_abs_error": 9.9e-07,
+    "pct_within_tol": 100.0,
+    "tolerance": 0.001,
+    "passes": true
+  },
+  {
+    "config": "smote_3",
+    "mean_abs_error": 6.3e-07,
+    "pct_within_tol": 100.0,
+    "tolerance": 0.001,
+    "passes": true
+  }
+]

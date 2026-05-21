@@ -1,0 +1,154 @@
+{
+  "primary_model": "XGBoost",
+  "best_xgb_config": "smote_1",
+  "selection_reason": "4 dari 4 konfigurasi XGBoost memenuhi semua target; dipilih berdasarkan PR-AUC tertinggi.",
+  "threshold": 0.943794846534729,
+  "best_xgb_test_metrics": {
+    "config": "smote_1",
+    "model": "XGBoost",
+    "split": "test",
+    "threshold": 0.9438,
+    "precision": 0.9987,
+    "recall": 0.979,
+    "f1": 0.9887,
+    "roc_auc": 1.0,
+    "pr_auc": 0.9998,
+    "n_samples": 954313,
+    "n_fraud": 3994,
+    "n_pred_fraud": 3915,
+    "tp": 3910,
+    "fp": 5,
+    "fn": 84,
+    "tn": 950314,
+    "meets_all_targets": true,
+    "cv_pr_auc": NaN,
+    "best_params": "rekonstruksi_dari_model_tersimpan"
+  },
+  "all_xgb_configs": {
+    "baseline": {
+      "pr_auc": 0.9995,
+      "roc_auc": 1.0,
+      "f1": 0.9981,
+      "recall": 0.9992,
+      "precision": 0.997,
+      "threshold": 0.6502,
+      "meets_all_targets": true
+    },
+    "smote_1": {
+      "pr_auc": 0.9998,
+      "roc_auc": 1.0,
+      "f1": 0.9887,
+      "recall": 0.979,
+      "precision": 0.9987,
+      "threshold": 0.9438,
+      "meets_all_targets": true
+    },
+    "smote_2": {
+      "pr_auc": 0.9996,
+      "roc_auc": 1.0,
+      "f1": 0.9976,
+      "recall": 0.9957,
+      "precision": 0.9995,
+      "threshold": 0.8055,
+      "meets_all_targets": true
+    },
+    "smote_3": {
+      "pr_auc": 0.9998,
+      "roc_auc": 1.0,
+      "f1": 0.9974,
+      "recall": 0.995,
+      "precision": 0.9997,
+      "threshold": 0.9822,
+      "meets_all_targets": true
+    }
+  },
+  "rf_role": "model_pembanding_fixed_parameter",
+  "rf_summary": {
+    "baseline": {
+      "pr_auc": 1.0,
+      "f1": 0.9991,
+      "recall": 0.9982,
+      "precision": 1.0
+    },
+    "smote_1": {
+      "pr_auc": 1.0,
+      "f1": 0.9984,
+      "recall": 0.9967,
+      "precision": 1.0
+    },
+    "smote_2": {
+      "pr_auc": 1.0,
+      "f1": 0.9984,
+      "recall": 0.9967,
+      "precision": 1.0
+    },
+    "smote_3": {
+      "pr_auc": 1.0,
+      "f1": 0.9977,
+      "recall": 0.9955,
+      "precision": 1.0
+    }
+  },
+  "best_theta_low": 0.6607,
+  "best_theta_high": 0.9438,
+  "shap_analysis": {
+    "optimal_config_shap": "baseline",
+    "selection_reason": "Tidak ada konfigurasi yang memenuhi semua target kinerja DAN konsistensi sekaligus. Dipilih konfigurasi yang memenuhi target kinerja dengan konsistensi SHAP terbaik.",
+    "performance_metrics": {
+      "pr_auc": 0.9995,
+      "f1": 0.9981,
+      "recall": 0.9992
+    },
+    "consistency_metrics": {
+      "spearman_vs_baseline": 1.0,
+      "cv_top5": 0.7514,
+      "jaccard_vs_baseline": 1.0
+    },
+    "all_candidates": [
+      {
+        "config": "baseline",
+        "pr_auc": 0.9995,
+        "f1": 0.9981,
+        "recall": 0.9992,
+        "meets_perf_targets": true,
+        "meets_consistency": "False",
+        "spearman_vs_baseline": 1.0,
+        "cv_top5": 0.7514,
+        "jaccard_vs_baseline": 1.0
+      },
+      {
+        "config": "smote_1",
+        "pr_auc": 0.9998,
+        "f1": 0.9887,
+        "recall": 0.979,
+        "meets_perf_targets": true,
+        "meets_consistency": false,
+        "spearman_vs_baseline": 0.7607,
+        "cv_top5": 0.7562,
+        "jaccard_vs_baseline": 0.6667
+      },
+      {
+        "config": "smote_2",
+        "pr_auc": 0.9996,
+        "f1": 0.9976,
+        "recall": 0.9957,
+        "meets_perf_targets": true,
+        "meets_consistency": "False",
+        "spearman_vs_baseline": 0.8571,
+        "cv_top5": 0.7562,
+        "jaccard_vs_baseline": 0.6667
+      },
+      {
+        "config": "smote_3",
+        "pr_auc": 0.9998,
+        "f1": 0.9974,
+        "recall": 0.995,
+        "meets_perf_targets": true,
+        "meets_consistency": "False",
+        "spearman_vs_baseline": 0.9036,
+        "cv_top5": 0.7562,
+        "jaccard_vs_baseline": 0.6667
+      }
+    ]
+  }
+}

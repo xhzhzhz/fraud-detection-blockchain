@@ -1,0 +1,16 @@
+,cv
+errorBalanceOrig,0.5538952
+oldbalanceDest,0.6139026
+type_CASH_OUT,0.68049806
+amount,0.69571584
+oldbalanceOrg,0.71966046
+transaction_hour,0.72030395
+newbalanceOrig,0.75512934
+type_TRANSFER,0.7801237
+type_PAYMENT,0.8152185
+amountToBalanceOrig,0.9371317
+transaction_day,0.9461417
+errorBalanceDest,0.98164266
+newbalanceDest,1.0092059
+type_CASH_IN,1.3672655
+type_DEBIT,1.368934

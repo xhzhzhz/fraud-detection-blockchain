@@ -1,0 +1,125 @@
+{
+  "metrics": {
+    "spearman_matrix": {
+      "baseline": {
+        "baseline": 1.0,
+        "smote_1": 0.7607,
+        "smote_2": 0.8571,
+        "smote_3": 0.9036
+      },
+      "smote_1": {
+        "baseline": 0.7607,
+        "smote_1": 1.0,
+        "smote_2": 0.8071,
+        "smote_3": 0.7929
+      },
+      "smote_2": {
+        "baseline": 0.8571,
+        "smote_1": 0.8071,
+        "smote_2": 1.0,
+        "smote_3": 0.8393
+      },
+      "smote_3": {
+        "baseline": 0.9036,
+        "smote_1": 0.7929,
+        "smote_2": 0.8393,
+        "smote_3": 1.0
+      }
+    },
+    "jaccard_matrix": {
+      "baseline": {
+        "baseline": 1.0,
+        "smote_1": 0.6667,
+        "smote_2": 0.6667,
+        "smote_3": 0.6667
+      },
+      "smote_1": {
+        "baseline": 0.6667,
+        "smote_1": 1.0,
+        "smote_2": 1.0,
+        "smote_3": 1.0
+      },
+      "smote_2": {
+        "baseline": 0.6667,
+        "smote_1": 1.0,
+        "smote_2": 1.0,
+        "smote_3": 1.0
+      },
+      "smote_3": {
+        "baseline": 0.6667,
+        "smote_1": 1.0,
+        "smote_2": 1.0,
+        "smote_3": 1.0
+      }
+    },
+    "cv_per_feature": {
+      "errorBalanceOrig": 0.5538951754570007,
+      "oldbalanceDest": 0.6139026284217834,
+      "type_CASH_OUT": 0.6804980635643005,
+      "amount": 0.6957158446311951,
+      "oldbalanceOrg": 0.7196604609489441,
+      "transaction_hour": 0.7203039526939392,
+      "newbalanceOrig": 0.755129337310791,
+      "type_TRANSFER": 0.7801237106323242,
+      "type_PAYMENT": 0.8152185082435608,
+      "amountToBalanceOrig": 0.9371317028999329,
+      "transaction_day": 0.9461417198181152,
+      "errorBalanceDest": 0.9816426634788513,
+      "newbalanceDest": 1.009205937385559,
+      "type_CASH_IN": 1.3672654628753662,
+      "type_DEBIT": 1.3689340353012085
+    }
+  },
+  "summary_per_config": [
+    {
+      "config": "baseline",
+      "spearman_vs_baseline": 1.0,
+      "meets_spearman": true,
+      "cv_top5_features": 0.7514,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 1.0,
+      "meets_jaccard": true,
+      "meets_all_consistency": "False"
+    },
+    {
+      "config": "smote_1",
+      "spearman_vs_baseline": 0.7607,
+      "meets_spearman": false,
+      "cv_top5_features": 0.7562,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 0.6667,
+      "meets_jaccard": true,
+      "meets_all_consistency": false
+    },
+    {
+      "config": "smote_2",
+      "spearman_vs_baseline": 0.8571,
+      "meets_spearman": true,
+      "cv_top5_features": 0.7562,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 0.6667,
+      "meets_jaccard": true,
+      "meets_all_consistency": "False"
+    },
+    {
+      "config": "smote_3",
+      "spearman_vs_baseline": 0.9036,
+      "meets_spearman": true,
+      "cv_top5_features": 0.7562,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 0.6667,
+      "meets_jaccard": true,
+      "meets_all_consistency": "False"
+    }
+  ],
+  "targets": {
+    "spearman": 0.8,
+    "cv": 0.3,
+    "jaccard": 0.6,
+    "top_k": 5
+  }
+}

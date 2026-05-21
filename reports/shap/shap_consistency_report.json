@@ -1,0 +1,145 @@
+{
+  "phase": "Fase 3: SHAP Explainability",
+  "optimal_config": {
+    "optimal_config": "baseline",
+    "selection_reason": "Tidak ada konfigurasi yang memenuhi semua target kinerja DAN konsistensi sekaligus. Dipilih konfigurasi yang memenuhi target kinerja dengan konsistensi SHAP terbaik.",
+    "performance": {
+      "pr_auc": 0.9995,
+      "f1": 0.9981,
+      "recall": 0.9992
+    },
+    "consistency": {
+      "spearman_vs_baseline": 1.0,
+      "cv_top5": 0.7514,
+      "jaccard_vs_baseline": 1.0
+    },
+    "all_candidates": [
+      {
+        "config": "baseline",
+        "pr_auc": 0.9995,
+        "f1": 0.9981,
+        "recall": 0.9992,
+        "meets_perf_targets": true,
+        "meets_consistency": "False",
+        "spearman_vs_baseline": 1.0,
+        "cv_top5": 0.7514,
+        "jaccard_vs_baseline": 1.0
+      },
+      {
+        "config": "smote_1",
+        "pr_auc": 0.9998,
+        "f1": 0.9887,
+        "recall": 0.979,
+        "meets_perf_targets": true,
+        "meets_consistency": false,
+        "spearman_vs_baseline": 0.7607,
+        "cv_top5": 0.7562,
+        "jaccard_vs_baseline": 0.6667
+      },
+      {
+        "config": "smote_2",
+        "pr_auc": 0.9996,
+        "f1": 0.9976,
+        "recall": 0.9957,
+        "meets_perf_targets": true,
+        "meets_consistency": "False",
+        "spearman_vs_baseline": 0.8571,
+        "cv_top5": 0.7562,
+        "jaccard_vs_baseline": 0.6667
+      },
+      {
+        "config": "smote_3",
+        "pr_auc": 0.9998,
+        "f1": 0.9974,
+        "recall": 0.995,
+        "meets_perf_targets": true,
+        "meets_consistency": "False",
+        "spearman_vs_baseline": 0.9036,
+        "cv_top5": 0.7562,
+        "jaccard_vs_baseline": 0.6667
+      }
+    ]
+  },
+  "consistency": [
+    {
+      "config": "baseline",
+      "spearman_vs_baseline": 1.0,
+      "meets_spearman": true,
+      "cv_top5_features": 0.7514,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 1.0,
+      "meets_jaccard": true,
+      "meets_all_consistency": "False"
+    },
+    {
+      "config": "smote_1",
+      "spearman_vs_baseline": 0.7607,
+      "meets_spearman": false,
+      "cv_top5_features": 0.7562,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 0.6667,
+      "meets_jaccard": true,
+      "meets_all_consistency": false
+    },
+    {
+      "config": "smote_2",
+      "spearman_vs_baseline": 0.8571,
+      "meets_spearman": true,
+      "cv_top5_features": 0.7562,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 0.6667,
+      "meets_jaccard": true,
+      "meets_all_consistency": "False"
+    },
+    {
+      "config": "smote_3",
+      "spearman_vs_baseline": 0.9036,
+      "meets_spearman": true,
+      "cv_top5_features": 0.7562,
+      "cv_all_features": 0.863,
+      "meets_cv": "False",
+      "jaccard_vs_baseline": 0.6667,
+      "meets_jaccard": true,
+      "meets_all_consistency": "False"
+    }
+  ],
+  "targets": {
+    "spearman": 0.8,
+    "cv": 0.3,
+    "jaccard": 0.6,
+    "top_k": 5
+  },
+  "additivity": [
+    {
+      "config": "baseline",
+      "mean_abs_error": 1.4e-07,
+      "pct_within_tol": 100.0,
+      "tolerance": 0.001,
+      "passes": true
+    },
+    {
+      "config": "smote_1",
+      "mean_abs_error": 6.9e-07,
+      "pct_within_tol": 100.0,
+      "tolerance": 0.001,
+      "passes": true
+    },
+    {
+      "config": "smote_2",
+      "mean_abs_error": 9.9e-07,
+      "pct_within_tol": 100.0,
+      "tolerance": 0.001,
+      "passes": true
+    },
+    {
+      "config": "smote_3",
+      "mean_abs_error": 6.3e-07,
+      "pct_within_tol": 100.0,
+      "tolerance": 0.001,
+      "passes": true
+    }
+  ]
+}
