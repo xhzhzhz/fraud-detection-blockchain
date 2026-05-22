@@ -1,0 +1,10 @@
+{
+  "network": "sepolia",
+  "contractAddress": "0xaE17E7277E55307D171Cedd6736F00d393b75d19",
+  "deployerAddress": "0xCb9CBd1389F97d6fcF00D401B713850a4dFd3Deb",
+  "txHash": "0x6c74e838ed796493c6cb424fbb48508c56d7d91b1362cbbbccd9b6549f6e9361",
+  "blockNumber": 10893352,
+  "gasUsed": "859710",
+  "deployedAt": "2026-05-21T19:22:13.131Z",
+  "explorerUrl": "https://sepolia.etherscan.io/address/0xaE17E7277E55307D171Cedd6736F00d393b75d19"
+}
