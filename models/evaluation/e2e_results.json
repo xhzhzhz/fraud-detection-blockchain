@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-05-24T00:06:40.659640",
+  "api_base": "http://localhost:8000",
+  "theta_low": 0.4551,
+  "theta_high": 0.6502,
+  "scenarios": [
+    {
+      "name": "E2E-01 LEGITIMATE (5 sampel)",
+      "passed": true
+    },
+    {
+      "name": "E2E-02 SUSPICIOUS",
+      "passed": true
+    },
+    {
+      "name": "E2E-03 FRAUD terdeteksi (\u22654/5)",
+      "passed": true
+    },
+    {
+      "name": "E2E-04 AML high-value",
+      "passed": true
+    },
+    {
+      "name": "E2E-05 Edge case saldo nol",
+      "passed": true
+    }
+  ],
+  "total_passed": 5,
+  "total": 5
+}

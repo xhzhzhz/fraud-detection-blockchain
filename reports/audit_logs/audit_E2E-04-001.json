@@ -1,0 +1,72 @@
+{
+  "transaction_id": "E2E-04-001",
+  "timestamp": "2026-05-23T17:06:29.339055+00:00",
+  "audit_reason": "high_value_transaction",
+  "transaction_details": {
+    "type": "TRANSFER",
+    "amount": 10209112.0,
+    "sender_id": "e3b0c44298fc1c14...",
+    "receiver_id": "e3b0c44298fc1c14...",
+    "sender_balance_before": 0.0,
+    "sender_balance_after": 0.0,
+    "receiver_balance_before": 17976964.0,
+    "receiver_balance_after": 28186076.0
+  },
+  "detection_result": {
+    "fraud_score": 0.268675,
+    "decision": "LEGITIMATE",
+    "decision_threshold_high": 0.6502
+  },
+  "shap_explanation": {
+    "base_value": 0.000214,
+    "top_features": [
+      {
+        "rank": 1,
+        "feature": "errorBalanceOrig",
+        "shap_value": -0.64785,
+        "feature_value": -10209112.0,
+        "direction": "decreases_fraud_risk",
+        "nl_description": "Saldo pengirim konsisten dengan nominal transaksi"
+      },
+      {
+        "rank": 2,
+        "feature": "amountToBalanceOrig",
+        "shap_value": -0.312216,
+        "feature_value": 10209112.0,
+        "direction": "decreases_fraud_risk",
+        "nl_description": "Nominal transaksi proporsional terhadap saldo pengirim"
+      },
+      {
+        "rank": 3,
+        "feature": "amount",
+        "shap_value": 0.074275,
+        "feature_value": 10209112.0,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Nominal transaksi tergolong sangat tinggi"
+      },
+      {
+        "rank": 4,
+        "feature": "oldbalanceOrg",
+        "shap_value": -0.062547,
+        "feature_value": 0.0,
+        "direction": "decreases_fraud_risk",
+        "nl_description": "Saldo awal pengirim dalam rentang normal"
+      },
+      {
+        "rank": 5,
+        "feature": "newbalanceOrig",
+        "shap_value": 0.038404,
+        "feature_value": 0.0,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Saldo akhir pengirim menunjukkan pola tidak wajar"
+      }
+    ],
+    "natural_language_explanation": "Transaksi ini diidentifikasi sebagai fraud karena: Nominal transaksi tergolong sangat tinggi; dan Saldo akhir pengirim menunjukkan pola tidak wajar.",
+    "shap_hash_top3": "d9d160c9903b7d80f169a8de73303f821810d159d8aee3f23bf82ca6ebd7cf1c"
+  },
+  "audit_metadata": {
+    "model_version": "xgboost-baseline-v1.0",
+    "validator_address": "0xCb9CBd1389F97d6fcF00D401B713850a4dFd3Deb",
+    "blockchain_tx_hash": "0x4555e9e82c31c699e1b308fe545688892c0e5ffef4bc9a1544b3849aa23659f9"
+  }
+}

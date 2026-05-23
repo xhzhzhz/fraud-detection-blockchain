@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-05-24T00:09:21.869391",
+  "T1_latency": {
+    "p50_ms": 2063.3,
+    "p95_ms": 2082.3,
+    "p99_ms": 2085.2,
+    "target_ms": 5000,
+    "passed": true
+  },
+  "T2_concurrent_10": {
+    "errors": 0,
+    "passed": true
+  },
+  "T3_concurrent_50": {
+    "errors": 0,
+    "passed": true
+  },
+  "T4_invalid_input": {
+    "passed": true
+  }
+}

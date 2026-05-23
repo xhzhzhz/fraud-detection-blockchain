@@ -1,0 +1,72 @@
+{
+  "transaction_id": "E2E-03-002",
+  "timestamp": "2026-05-23T17:06:20.139281+00:00",
+  "audit_reason": "high_fraud_score",
+  "transaction_details": {
+    "type": "TRANSFER",
+    "amount": 70239.81,
+    "sender_id": "e3b0c44298fc1c14...",
+    "receiver_id": "e3b0c44298fc1c14...",
+    "sender_balance_before": 70239.81,
+    "sender_balance_after": 0.0,
+    "receiver_balance_before": 0.0,
+    "receiver_balance_after": 0.0
+  },
+  "detection_result": {
+    "fraud_score": 0.737119,
+    "decision": "FRAUD",
+    "decision_threshold_high": 0.6502
+  },
+  "shap_explanation": {
+    "base_value": 0.000214,
+    "top_features": [
+      {
+        "rank": 1,
+        "feature": "errorBalanceOrig",
+        "shap_value": 0.473739,
+        "feature_value": 0.0,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Terdapat inkonsistensi signifikan antara saldo dan nominal transaksi pengirim"
+      },
+      {
+        "rank": 2,
+        "feature": "amountToBalanceOrig",
+        "shap_value": 0.361643,
+        "feature_value": 1.0,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Nominal transaksi tidak proporsional terhadap saldo pengirim"
+      },
+      {
+        "rank": 3,
+        "feature": "newbalanceOrig",
+        "shap_value": 0.124616,
+        "feature_value": 0.0,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Saldo akhir pengirim menunjukkan pola tidak wajar"
+      },
+      {
+        "rank": 4,
+        "feature": "type_TRANSFER",
+        "shap_value": 0.022963,
+        "feature_value": 1.0,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Tipe transaksi TRANSFER memiliki asosiasi tinggi dengan pola kecurangan"
+      },
+      {
+        "rank": 5,
+        "feature": "oldbalanceOrg",
+        "shap_value": 0.020437,
+        "feature_value": 70239.81,
+        "direction": "increases_fraud_risk",
+        "nl_description": "Saldo awal pengirim memiliki pola berisiko"
+      }
+    ],
+    "natural_language_explanation": "Transaksi ini diidentifikasi sebagai fraud karena: Terdapat inkonsistensi signifikan antara saldo dan nominal transaksi pengirim; Nominal transaksi tidak proporsional terhadap saldo pengirim; Saldo akhir pengirim menunjukkan pola tidak wajar; Tipe transaksi TRANSFER memiliki asosiasi tinggi dengan pola kecurangan; dan Saldo awal pengirim memiliki pola berisiko.",
+    "shap_hash_top3": "b4a843a80380e87e7ad47b005fe78e3eb9c273ea55867234f513122a63ca9851"
+  },
+  "audit_metadata": {
+    "model_version": "xgboost-baseline-v1.0",
+    "validator_address": "0xCb9CBd1389F97d6fcF00D401B713850a4dFd3Deb",
+    "blockchain_tx_hash": null
+  }
+}
